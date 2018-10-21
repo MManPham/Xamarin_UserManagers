@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UserManager.Models;
 using UserManager.ViewModels;
 using Xamarin.Forms;
@@ -15,13 +16,18 @@ namespace UserManager.Views
             InitializeComponent();
 
             BindingContext = viewModel = new ListUsersVM();
+
+   
+          
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(viewModel.Items != null)
+            if(viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+
+
         }
         public class TextChangedBehavior : Behavior<SearchBar>
         {

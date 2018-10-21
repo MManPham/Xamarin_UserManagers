@@ -18,12 +18,12 @@
                 <StackLayout Orientation="Vertical" Spacing="20" Padding="20,10,20,10" >
                     <StackLayout >
                         <Label Text="Name: "  FontSize="17" TextColor="#33b5e5"/>
-                        <Entry x:Name="name" Placeholder="Name" Text="{Binding user_edit.Name}"/>
+                        <Entry x:Name="Name"   Text="{Binding user_edit.Name}"/>
                     </StackLayout>
 
                     <StackLayout>
                         <Label Text="Age: "  FontSize="17" TextColor="#33b5e5"/>
-                        <Entry x:Name="age" Placeholder="Age" Text="{Binding user_edit.Age}"/>
+                        <Entry x:Name="Age" Placeholder="Age" Text="{Binding user_edit.Age}"/>
                     </StackLayout>
 
                     <StackLayout>

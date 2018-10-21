@@ -17,7 +17,8 @@ namespace UserManager.Models
 
         public User()
         {
-
+            Name  = Address = Phone = null;
+            Age = Salary = 0;
         }
 
     }

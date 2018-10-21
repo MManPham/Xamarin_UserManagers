@@ -39,8 +39,7 @@ namespace UserManager.Views
 
                 await DisplayAlert("Require", "Some feild is requid!!", "Cancle");
             }
-
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new ListUser());
 
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 using UserManager.Models;
@@ -12,17 +11,16 @@ namespace UserManager.ViewModels
 {
     public class ListUsersVM : BasicViewModel
     {
-        private ObservableCollection<User> items;
+        private ObservableCollection<User> _item;
         public ObservableCollection<User> Items
         {
-            get { return items; }
+            get { return _item; }
             set
             {
-                items = value;
-                OnPropertyChanged("items");
+                _item = value;
+                OnPropertyChanged();
             }
         }
-
 
 
         public Command LoadItemsCommand { get; set; }
@@ -32,54 +30,32 @@ namespace UserManager.ViewModels
         {
             Title = "List User";
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+
+
             Items = new ObservableCollection<User>();
+
+
 
             MessagingCenter.Subscribe<AddUser, User>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as User;
-                Items.Add(item);
-                await DataStore.AddItemAsync(newItem);
+
+                await DataStore.AddItemAsync(item);
+                LoadItemsCommand.Execute(null);
+
             });
 
             MessagingCenter.Subscribe<ListUser, string>(this, "DeleteUser", async (obj, _id) =>
             {
                 await DataStore.DeleteItemAsync(_id);
-                foreach (User user in Items.ToList())
-                {
-                    if (user.Id == _id)
-                    {
-                        try
-                        {
-                            Items.Remove(user);
-
-                        }
-                        catch (Exception e)
-                        {
-                            System.Diagnostics.Debug.WriteLine("Unsubscribe Error " + e.Message);
-                        }
-                    }
-                }
+                LoadItemsCommand.Execute(null);
 
             });
 
             MessagingCenter.Subscribe<EditUser, User>(this, "EditUser", async (obj, user_edit) =>
             {
-
                 await DataStore.UpdateItemAsync(user_edit);
-                foreach (User user in Items.ToList())
-                {
-                    if (user.Id == user_edit.Id)
-                    {
-                        try
-                        {
-                            Items.CollectionChanged(user_edit)
-                        }
-                        catch (Exception e)
-                        {
-                            System.Diagnostics.Debug.WriteLine("Unsubscribe Error " + e.Message);
-                        }
-                    }
-                }
+                LoadItemsCommand.Execute(null);
+
             });
 
         }
