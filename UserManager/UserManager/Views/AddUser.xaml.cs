@@ -36,7 +36,7 @@ namespace UserManager.Views
             catch (Exception )
             {
 
-                await DisplayAlert("Require", "Some feild is requid!!", "Cancle");
+                await DisplayAlert("Require", "Some feild is requiddsadasdasdasdsads!!", "Cancle");
             }
                
             await Navigation.PopAsync();
