@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserManager.Views.Register"
+             Title="Register Admin">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" 
+                 BackgroundColor="#00A9E0"  >
+                <Image HorizontalOptions="Center" Source="xamarin.png"/>
+                <StackLayout BackgroundColor="#33b5e5"  Spacing="20" Padding="20">
+                    <Entry x:Name="user_name"
+                       TextColor="White"
+                       Placeholder="User Name"
+                       PlaceholderColor="White"
+                   />
+                    <Entry x:Name="password"
+                       TextColor="White"
+                       Placeholder="Password"
+                       PlaceholderColor="White"
+                   />
+                    <Entry x:Name="position"
+                       TextColor="White"
+                       Placeholder="Position"
+                       PlaceholderColor="White"
+                   />
+                    <Entry x:Name="admin_code"
+                       TextColor="White"
+                       Placeholder="Admin Code"
+                       PlaceholderColor="White"
+                   />
+                    <Button x:Name="register" Text="register" BackgroundColor="White" Clicked="register_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

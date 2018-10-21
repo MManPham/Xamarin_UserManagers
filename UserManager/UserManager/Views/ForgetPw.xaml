@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserManager.Views.ForgetPw"
+             Title="Forget ">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#00A9E0" >
+            <Image HorizontalOptions="Center" Source="xamarin.png"/>
+            <StackLayout BackgroundColor="#33b5e5"  Spacing="20" Padding="20">
+                <Entry x:Name="your_name"
+                       TextColor="White"
+                       Placeholder="You Name"
+                       PlaceholderColor="White"
+                   />
+                <Entry x:Name="admin_code"
+                       TextColor="White"
+                       Placeholder="Admin Code"
+                       PlaceholderColor="White"
+                   />
+                <Button x:Name="submit" Text="Submit" BackgroundColor="White" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

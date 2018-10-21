@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserManager.Views.Login"
+             Title="Login">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" 
+                 Padding="20" 
+                 BackgroundColor="#00A9E0" >
+            <Image HorizontalOptions="Center"  x:Name="LogoXamarin"/>
+
+            <StackLayout BackgroundColor="#33b5e5"  Spacing="30" Padding="20">
+                <Entry x:Name="user_name"
+                   TextColor="White"
+                   Placeholder="User Name"
+                   PlaceholderColor="White"
+                   />
+                <Entry x:Name="password" 
+                   TextColor="White"
+                   Placeholder="Password"
+                   PlaceholderColor="White"
+                   IsPassword="True"/>
+                <Button x:Name="submit" Text="login" BackgroundColor="White" Clicked="submit_Clicked" />
+                <StackLayout Orientation="Horizontal" >
+                    <Button Text="Register admin ?" TextColor="White" 
+                        BackgroundColor="#33b5e5" 
+                        HorizontalOptions="Start"
+                        Clicked="btnRegister"
+                        FontSize="12"
+                        />
+                    <Button Text="Forget Password?" 
+                        TextColor="White"  
+                        Margin="5,0,0,0" 
+                        BackgroundColor="#33b5e5" 
+                        HorizontalOptions="End"
+                        FontSize="12"
+                         Clicked="btnForgetPw"/>
+
+                </StackLayout>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

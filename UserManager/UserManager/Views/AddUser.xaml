@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserManager.Views.AddUser"
+             Title="Add User">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout">
+            <ToolbarItem.Icon >
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="Logout.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"  VerticalOptions="Center">
+ 
+            <ScrollView>
+                <StackLayout Orientation="Vertical" Padding="20,10,20,10" >
+                    <StackLayout >
+                        <Label Text="Name: "  TextColor="#33b5e5"/>
+                        <Entry x:Name="nameUser" />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Age: "  TextColor="#33b5e5"/>
+                        <Entry x:Name="ageUser"  />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Address: "   TextColor="#33b5e5"/>
+                        <Entry x:Name="address"  />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Phone: "  TextColor="#33b5e5"/>
+                        <Entry x:Name="phone"  />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Position: "   TextColor="#33b5e5"/>
+                        <Entry x:Name="position" />
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Salary: " TextColor="#33b5e5"/>
+                        <Entry x:Name="salary" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Submit"
+                    BackgroundColor="#33b5e5"
+                    TextColor="White"
+                    Margin="0,0,0,10"
+                    Clicked="Save_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

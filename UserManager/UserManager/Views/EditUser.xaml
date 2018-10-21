@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UserManager.Views.EditUser"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" >
+            <ToolbarItem.Icon >
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="Logout.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" >
+            <ScrollView>
+                <StackLayout Orientation="Vertical" Spacing="20" Padding="20,10,20,10" >
+                    <StackLayout >
+                        <Label Text="Name: "  FontSize="17" TextColor="#33b5e5"/>
+                        <Entry x:Name="name" Placeholder="Name" Text="{Binding user_edit.Name}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Age: "  FontSize="17" TextColor="#33b5e5"/>
+                        <Entry x:Name="age" Placeholder="Age" Text="{Binding user_edit.Age}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Address: "  FontSize="17" TextColor="#33b5e5"/>
+                        <Entry x:Name="address" Placeholder="Address" Text="{Binding user_edit.Address}"/>
+                    </StackLayout>
+                    
+                    <StackLayout>
+                        <Label Text="Phone: "  FontSize="17" TextColor="#33b5e5"/>
+                        <Entry x:Name="phone" Placeholder="Phone Number" Text="{Binding user_edit.Phone}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Position: "  FontSize="17" TextColor="#33b5e5"/>
+                        <Entry x:Name="position" Placeholder="Position" Text="{Binding user_edit.Position}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Salary: "  FontSize="17" TextColor="#33b5e5"/>
+                        <Entry x:Name="salary" Placeholder="Salary" Text="{Binding user_edit.Salary}"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Submit"
+                    x:Name="edit_submit"
+                    BackgroundColor="#33b5e5"
+                    TextColor="White"
+                    Margin="0,0,0,10"
+                    Clicked="edit_submit_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
