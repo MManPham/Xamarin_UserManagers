@@ -4,7 +4,7 @@
              x:Class="UserManager.Views.EditUser"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout" >
+        <ToolbarItem Text="Logout" x:Name="Logout" Clicked="Logout_Clicked">
             <ToolbarItem.Icon >
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android" Value="Logout.png"/>
@@ -36,14 +36,7 @@
                         <Entry x:Name="phone" Placeholder="Phone Number" Text="{Binding user_edit.Phone}"/>
                     </StackLayout>
 
-                    <StackLayout>
-                        <Label Text="Position: "  FontSize="17" TextColor="#33b5e5"/>
-                        <Entry x:Name="position" Placeholder="Position" Text="{Binding user_edit.Position}"/>
-                    </StackLayout>
-                    <StackLayout>
-                        <Label Text="Salary: "  FontSize="17" TextColor="#33b5e5"/>
-                        <Entry x:Name="salary" Placeholder="Salary" Text="{Binding user_edit.Salary}"/>
-                    </StackLayout>
+                   
                 </StackLayout>
             </ScrollView>
             <Button Text="Submit"

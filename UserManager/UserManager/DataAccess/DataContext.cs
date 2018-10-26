@@ -1,18 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UserManager.Models;
-using Xamarin.Forms;
 
 namespace UserManager.DataAccess
 {
     public class DataContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+
+
         private string _dbPath { get; set; }
 
-        public DataContext(string dbPath) {
+        public DataContext(string dbPath)
+        {
 
             _dbPath = dbPath;
 
@@ -41,12 +40,9 @@ namespace UserManager.DataAccess
             modelBuilder.Entity<User>()
                 .Property(p => p.Phone)
                 .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(p => p.Position)
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(p => p.Salary)
-                .IsRequired();
+
+
+
 
         }
     }

@@ -20,9 +20,9 @@ namespace UserManager.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "user_manager.db");
+            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "UserManager.db");
 
-            IDataStore<User> userRepository = new UserRepository(dbPath);
+            IDataStore userRepository = new UserManagerRepository(dbPath);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App(userRepository));

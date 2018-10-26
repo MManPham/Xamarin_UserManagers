@@ -9,8 +9,11 @@ namespace UserManager
 {
     public partial class App : Application
     {
-        public static IDataStore<User> dataUserReposi;
-        public App(IDataStore<User> UserRepository)
+        public static IDataStore dataUserReposi;
+
+        public static bool IsUserLoggedIn { get; set; }
+
+        public App(IDataStore UserRepository)
         {
 
             #if DEBUG
@@ -20,8 +23,14 @@ namespace UserManager
             InitializeComponent();
 
             dataUserReposi = UserRepository;
-
-            MainPage = new NavigationPage(new UserManager.Views.ListUser());
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new Views.Login());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
 ;            
             
         }

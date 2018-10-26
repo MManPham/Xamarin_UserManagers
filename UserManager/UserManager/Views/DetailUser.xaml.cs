@@ -39,6 +39,7 @@ namespace UserManager.Views
                 try
                 {
                     MessagingCenter.Send(this, "DeleteUser", _id);
+                    
 
                 }
                 catch (Exception)
@@ -47,6 +48,13 @@ namespace UserManager.Views
                     throw;
                 }
             }
+            await Navigation.PopAsync();
+        }
+
+        private async void Logout_Clicked(object sender, EventArgs e)
+        {
+            App.IsUserLoggedIn = false;
+            Navigation.InsertPageBefore(new Login(), this);
             await Navigation.PopAsync();
         }
     }

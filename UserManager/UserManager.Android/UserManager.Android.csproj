@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UserManager\UserManager.csproj">
-      <Project>{02DED500-FF39-4719-B4C4-8CA91A242738}</Project>
+      <Project>{7ED3EAB9-BE18-4E84-B4E2-B4B3C7A8B731}</Project>
       <Name>UserManager</Name>
     </ProjectReference>
   </ItemGroup>

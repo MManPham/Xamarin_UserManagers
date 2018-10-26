@@ -1,28 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using UserManager.DataAccess;
 using UserManager.Models;
 
 namespace UserManager.Services
 {
-    public class UserRepository : IDataStore<User>
+    public class UserManagerRepository : IDataStore
     {
-        public  DataContext _dbContext;
+        public DataContext _dbContext;
 
-        
-        public UserRepository(string dbPath)
+
+        public UserManagerRepository(string dbPath)
         {
             _dbContext = new DataContext(dbPath);
         }
 
-        public async Task<bool> AddItemAsync(User item)
+        public async Task<bool> AddUserAsync(User User)
         {
             try
             {
-                _dbContext.Users.Add(item);
+                _dbContext.Users.Add(User);
                 await _dbContext.SaveChangesAsync().ConfigureAwait(false);
                 return true;
             }
@@ -33,13 +32,13 @@ namespace UserManager.Services
 
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteUserAsync(string id)
         {
-            User itemRemove = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            User UserRemove = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             try
             {
-                 _dbContext.Users.Remove(itemRemove);
-                 _dbContext.SaveChanges();
+                _dbContext.Users.Remove(UserRemove);
+                _dbContext.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -51,24 +50,26 @@ namespace UserManager.Services
 
         }
 
-        public async Task<User> GetItemAsync(string id)
+        public async Task<User> GetUserAsync(string id)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id).ConfigureAwait(false);
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false)
         {
             var ListUsers = await _dbContext.Users.ToListAsync().ConfigureAwait(false);
             return ListUsers;
         }
 
-        public async Task<bool> UpdateItemAsync(User item)
+        public async Task<bool> UpdateUserAsync(User User)
         {
-            _dbContext.Users.Update(item);
+            _dbContext.Users.Update(User);
 
             await _dbContext.SaveChangesAsync().ConfigureAwait(false);
             return true;
         }
+
+
     }
 }

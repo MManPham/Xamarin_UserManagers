@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace UserManager.ViewModels
 {
-    public class ListUsersVM : BasicViewModel
+    public class MainPageVM : BasicViewModel
     {
         private ObservableCollection<User> _item;
         public ObservableCollection<User> Items
@@ -26,7 +26,7 @@ namespace UserManager.ViewModels
         public Command LoadItemsCommand { get; set; }
 
 
-        public ListUsersVM()
+        public MainPageVM()
         {
             Title = "List User";
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
@@ -39,21 +39,22 @@ namespace UserManager.ViewModels
             MessagingCenter.Subscribe<AddUser, User>(this, "AddItem", async (obj, item) =>
             {
 
-                await DataStore.AddItemAsync(item);
+                await DataStore.AddUserAsync(item);
                 LoadItemsCommand.Execute(null);
 
             });
 
-            MessagingCenter.Subscribe<ListUser, string>(this, "DeleteUser", async (obj, _id) =>
+            MessagingCenter.Subscribe<MainPage, string>(this, "DeleteUser", async (obj, _id) =>
             {
-                await DataStore.DeleteItemAsync(_id);
+                await DataStore.DeleteUserAsync(_id);
+
                 LoadItemsCommand.Execute(null);
 
             });
 
             MessagingCenter.Subscribe<EditUser, User>(this, "EditUser", async (obj, user_edit) =>
             {
-                await DataStore.UpdateItemAsync(user_edit);
+                await DataStore.UpdateUserAsync(user_edit);
                 LoadItemsCommand.Execute(null);
 
             });
@@ -71,8 +72,8 @@ namespace UserManager.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
+                var ListItems = await DataStore.GetUsersAsync(true);
+                foreach (var item in ListItems)
                 {
                     Items.Add(item);
                 }

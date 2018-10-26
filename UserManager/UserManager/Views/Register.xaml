@@ -13,21 +13,27 @@
                        TextColor="White"
                        Placeholder="User Name"
                        PlaceholderColor="White"
+                       Text="{Binding Name}"
                    />
                     <Entry x:Name="password"
                        TextColor="White"
                        Placeholder="Password"
                        PlaceholderColor="White"
+                       Text="{Binding Passwrod}"
                    />
                     <Entry x:Name="position"
                        TextColor="White"
                        Placeholder="Position"
                        PlaceholderColor="White"
+                       Text="{Binding Position}"
+                           
                    />
                     <Entry x:Name="admin_code"
                        TextColor="White"
                        Placeholder="Admin Code"
                        PlaceholderColor="White"
+                       Text="{Binding KeyAdmin}"
+                           
                    />
                     <Button x:Name="register" Text="register" BackgroundColor="White" Clicked="register_Clicked" />
                 </StackLayout>

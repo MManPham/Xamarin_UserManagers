@@ -8,20 +8,19 @@
                  Padding="20" 
                  BackgroundColor="#00A9E0" >
             <Image HorizontalOptions="Center"  x:Name="LogoXamarin"/>
-
             <StackLayout BackgroundColor="#33b5e5"  Spacing="30" Padding="20">
                 <Entry x:Name="user_name"
                    TextColor="White"
                    Placeholder="User Name"
-                   PlaceholderColor="White"
+                   PlaceholderColor="LightGray"
                    />
-                <Entry x:Name="password" 
+                <Entry x:Name="Password" 
                    TextColor="White"
                    Placeholder="Password"
-                   PlaceholderColor="White"
+                   PlaceholderColor="LightGray"
                    IsPassword="True"/>
                 <Button x:Name="submit" Text="login" BackgroundColor="White" Clicked="submit_Clicked" />
-                <StackLayout Orientation="Horizontal" >
+                <!--<StackLayout Orientation="Horizontal" >
                     <Button Text="Register admin ?" TextColor="White" 
                         BackgroundColor="#33b5e5" 
                         HorizontalOptions="Start"
@@ -35,8 +34,7 @@
                         HorizontalOptions="End"
                         FontSize="12"
                          Clicked="btnForgetPw"/>
-
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
 
         </StackLayout>

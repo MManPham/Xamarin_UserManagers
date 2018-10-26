@@ -4,7 +4,7 @@
              x:Class="UserManager.Views.AddUser"
              Title="Add User">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout">
+        <ToolbarItem Text="Logout" x:Name="Logout" Clicked="Logout_Clicked">
             <ToolbarItem.Icon >
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android" Value="Logout.png"/>
@@ -37,14 +37,6 @@
                         <Entry x:Name="phone"  />
                     </StackLayout>
 
-                    <StackLayout>
-                        <Label Text="Position: "   TextColor="#33b5e5"/>
-                        <Entry x:Name="position" />
-                    </StackLayout>
-                    <StackLayout>
-                        <Label Text="Salary: " TextColor="#33b5e5"/>
-                        <Entry x:Name="salary" />
-                    </StackLayout>
                 </StackLayout>
             </ScrollView>
             <Button Text="Submit"

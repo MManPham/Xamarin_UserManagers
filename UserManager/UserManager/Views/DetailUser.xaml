@@ -4,7 +4,7 @@
              x:Class="UserManager.Views.DetailUser" 
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout">
+        <ToolbarItem Text="Logout" x:Name="Logout" Clicked="Logout_Clicked">
             <ToolbarItem.Icon >
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android" Value="Logout.png"/>
@@ -35,15 +35,6 @@
                     <StackLayout>
                             <Label Text="Phone: "  FontSize="17" TextColor="#33b5e5"/>
                             <Label x:Name="phone" FontSize="15" Text="{Binding user_detail.Phone}"/>
-                    </StackLayout>
-
-                    <StackLayout>
-                            <Label Text="Position: "  FontSize="17" TextColor="#33b5e5"/>
-                            <Label x:Name="position" FontSize="15" Text="{Binding user_detail.Position}"/>
-                    </StackLayout>
-                    <StackLayout>
-                            <Label Text="Salary: "  FontSize="17" TextColor="#33b5e5"/>
-                            <Label x:Name="salary" FontSize="15" Text="{Binding user_detail.Salary}"/>
                     </StackLayout>
                     </StackLayout>
                     <StackLayout Orientation="Vertical"   Margin="300,450,0,0">

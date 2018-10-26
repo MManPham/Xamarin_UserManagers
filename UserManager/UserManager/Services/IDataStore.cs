@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using UserManager.Models;
 
 namespace UserManager.Services
 {
-    public interface IDataStore<T>
+    public interface IDataStore
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(string id);
-        Task<T> GetItemAsync(string id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        //User
+        Task<bool> AddUserAsync(User User);
+
+        Task<bool> UpdateUserAsync(User User);
+
+        Task<bool> DeleteUserAsync(string id);
+
+        Task<User> GetUserAsync(string id);
+
+        Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false);
+
+
+
+
     }
 }

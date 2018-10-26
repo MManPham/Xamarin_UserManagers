@@ -39,7 +39,19 @@ namespace UserManager.Views
 
                 await DisplayAlert("Require", "Some feild is requid!!", "Cancle");
             }
-            await Navigation.PushAsync(new ListUser());
+            await Navigation.PushAsync(new MainPage());
+
+        }
+
+        private async void Logout_Clicked(object sender, EventArgs e)
+        {
+            App.IsUserLoggedIn = false;
+            Navigation.InsertPageBefore(new Login(), this);
+            await Navigation.PopAsync();
+        }
+
+        private void Logout_Clicked_1(object sender, EventArgs e)
+        {
 
         }
     }

@@ -10,7 +10,7 @@ namespace UserManager.ViewModels
 {
     public class BasicViewModel : INotifyPropertyChanged
     {
-        public IDataStore<User> DataStore => App.dataUserReposi;
+        public IDataStore DataStore => App.dataUserReposi;
 
 
         bool isBusy = false;

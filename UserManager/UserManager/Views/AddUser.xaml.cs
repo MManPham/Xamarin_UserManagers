@@ -17,32 +17,46 @@ namespace UserManager.Views
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            string name = nameUser.Text;
-            bool checkAgeNumb = int.TryParse(ageUser.Text, out int age);
-            string addr = address.Text;
-            this.newUser = new User
-            {
-                Name = name,
-                Age = int.Parse(ageUser.Text),
-                Address = address.Text,
-                Phone = phone.Text,
-                Position = position.Text,
-                Salary = int.Parse(salary.Text)
-            };
-            try
-            {
-                MessagingCenter.Send(this, "AddItem", this.newUser);
-            }
-            catch (Exception )
-            {
+            string _name = nameUser.Text;
+            bool isNum = int.TryParse(Convert.ToString(ageUser.Text), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo,  out int _age);
+            string _addr = address.Text;
+            string _phone = phone.Text;
 
-                await DisplayAlert("Require", "Some feild is requiddsadasdasdasdsads!!", "Cancle");
+            if(_name == null || _addr == null ||_addr== null || _phone== null)
+            {
+                await DisplayAlert("Warning", "There is a least one field is being empty", "Cancle");
             }
-               
-            await Navigation.PopAsync();
+            else if(isNum == false)
+            {
+                await DisplayAlert("Warning", "Age required type number", "Cancle");
+            }
+            else
+            {
+                this.newUser = new User
+                {
+                    Name = _name,
+                    Age = _age,
+                    Address = _addr,
+                    Phone = _phone,
+                };
+                try
+                {
+                    MessagingCenter.Send(this, "AddItem", this.newUser);
+                }
+                catch(Exception) { throw; }
+
+                await Navigation.PopAsync();
+            }
+
+
 
         }
-
+        private async void Logout_Clicked(object sender, EventArgs e)
+        {
+            App.IsUserLoggedIn = false;
+            Navigation.InsertPageBefore(new Login(), this);
+            await Navigation.PopAsync();
+        }
 
     }
 }

@@ -21,7 +21,7 @@ namespace UserManager.ViewModels
             {
                 try
                 {
-                    await DataStore.DeleteItemAsync(_id);
+                    await DataStore.DeleteUserAsync(_id);
 
                 }
                 catch (Exception)
@@ -35,9 +35,10 @@ namespace UserManager.ViewModels
             MessagingCenter.Subscribe<EditUser, User>(this, "EditUserDetailPage", async (obj, user_edit) =>
             {
 
-                await DataStore.UpdateItemAsync(user_edit);
+                await DataStore.UpdateUserAsync(user_edit);
 
                 this.user_detail = user_edit;
+                
 
             });
 

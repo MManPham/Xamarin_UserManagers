@@ -11,14 +11,13 @@ namespace UserManager.Models
         public int Age { get; set; }
         public  string Address { get; set; }
         public string Phone { get; set; }
-        public string Position { get; set; }
-        public int Salary { get; set; }
+
 
 
         public User()
         {
             Name  = Address = Phone = null;
-            Age = Salary = 0;
+            Age =  0;
         }
 
     }

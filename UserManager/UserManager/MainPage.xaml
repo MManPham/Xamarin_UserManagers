@@ -3,43 +3,103 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:UserManager"
              x:Class="UserManager.MainPage"
-             Title="Login Admin">
-
-    <StackLayout Orientation="Vertical" 
-                 Padding="20" 
-                 BackgroundColor="#00A9E0" >
-        <Image HorizontalOptions="Center"  x:Name="LogoXamarin"/>
-
-        <StackLayout BackgroundColor="#33b5e5"  Spacing="30" Padding="20">
-            <Entry x:Name="user_name"
-                   TextColor="White"
-                   Placeholder="User Name"
-                   PlaceholderColor="White"
-                   />
-            <Entry x:Name="password" 
-                   TextColor="White"
-                   Placeholder="Password"
-                   PlaceholderColor="White"
-                   IsPassword="True"/>
-            <Button x:Name="submit" Text="login" BackgroundColor="White" Clicked="submit_Clicked" />
-            <StackLayout Orientation="Horizontal" >
-                <Button Text="Register admin ?" TextColor="White" 
-                        BackgroundColor="#33b5e5" 
-                        HorizontalOptions="Start"
-                        Clicked="btnRegister"
-                        FontSize="12"
-                        />
-                <Button Text="Forget Password?" 
-                        TextColor="White"  
-                        Margin="5,0,0,0" 
-                        BackgroundColor="#33b5e5" 
-                        HorizontalOptions="End"
-                        FontSize="12"
-                         Clicked="btnForgetPw"/>
-
+             Title="{Binding Title}"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Logout" Text="Logout" Clicked="Logout_Clicked_1">
+            <ToolbarItem.Icon >
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="Logout.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="0"  >
+            <StackLayout Padding="10,0,35,10" BackgroundColor="white">
+                <SearchBar  Placeholder="Search Useddddr" 
+                                x:Name="srbSearchPeople"
+                                TextColor="White"
+                                />
             </StackLayout>
+            <ScrollView 
+                        Margin="0,10,0,0"
+                        HeightRequest="537"
+                        >
+                <RelativeLayout>
+                    <ListView 
+                        x:Name="ListView"
+                        ItemsSource="{Binding Items}"
+                        VerticalOptions="FillAndExpand"
+                        HasUnevenRows="true"
+                        IsPullToRefreshEnabled="true"
+                        CachingStrategy="RecycleElement"
+                        BackgroundColor="#FFFFFF"
+                        ItemSelected="ListView_ItemSelected"
+                        RefreshCommand="{Binding LoadItemsCommand}"
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                        HeightRequest="537"
+                        
+                       
+                        >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell x:Name="Item_List">
+                                    <StackLayout  x:Name="Item_Lis" Orientation="Horizontal" VerticalOptions="Center"
+                                                     Padding="20,10,10,10">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label 
+                                                    Text="{Binding Name}"
+                                                    x:Name="NameUser"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center"
+                                                    FontSize="18"
+                                                    TextColor="Black"/>
+                                            <Label 
+                                                    Text="{Binding  Age, StringFormat='Age: {0:F0}'}"
+                                                    x:Name="AgeUser"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center"
+                                                    FontSize="14"
+                                                    TextColor="Black"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" 
+                                                         HorizontalOptions="EndAndExpand" 
+                                                         BackgroundColor="#00000000 "
+                                                         Padding="0,0,20,0"
+                                                          >
+
+                                            <Button x:Name="DeleteBtn"
+                                                        Image="delete.png" 
+                                                        FontSize="13"
+                                                        BackgroundColor="#00000000 "
+                                                        CommandParameter="{Binding Id}" 
+                                                        WidthRequest="35"
+                                                        Clicked="DeleteBtn_Clicked"
+                                                        />
+                                            <Button Image="eddit.png"
+                                                        FontSize="13"
+                                                        BackgroundColor="#00000000 "
+                                                        CommandParameter="{Binding Id}"
+                                                        WidthRequest="35"
+                                                        Clicked="Button_Clicked"
+                                                    />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Image="add_button"
+                            x:Name="AddUser"
+                            BackgroundColor="#33b5e5"
+                            BorderRadius="100"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            Margin="300,440,0,0"
+                            Clicked="AddUser_Clicked"/>
+                </RelativeLayout>
+            </ScrollView>
         </StackLayout>
-
-    </StackLayout>
-
+    </ContentPage.Content>
 </ContentPage>

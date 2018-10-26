@@ -22,7 +22,7 @@ namespace UserManager.ViewModels
         {
             try
             {
-               this.user_edit = await DataStore.GetItemAsync(_id);
+               this.user_edit = await DataStore.GetUserAsync(_id);
             }
             catch (Exception)
             {
