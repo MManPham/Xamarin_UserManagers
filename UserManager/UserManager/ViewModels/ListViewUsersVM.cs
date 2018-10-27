@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 using UserManager.Models;
@@ -9,7 +11,16 @@ using Xamarin.Forms;
 
 namespace UserManager.ViewModels
 {
-    public class MainPageVM : BasicViewModel
+    static class Extensions
+    {
+        public static void Sort<TSource, TKey>(this ObservableCollection<TSource> collection, Func<TSource, TKey> keySelector)
+        {
+            List<TSource> sorted = collection.OrderBy(keySelector).ToList();
+            for (int i = 0; i < sorted.Count(); i++)
+                collection.Move(collection.IndexOf(sorted[i]), i);
+        }
+    }
+    public  class MainPageVM : BasicViewModel
     {
         private ObservableCollection<User> _item;
         public ObservableCollection<User> Items
@@ -35,6 +46,16 @@ namespace UserManager.ViewModels
             Items = new ObservableCollection<User>();
 
 
+            for (int i = 0; i < 30; i++)
+            {
+                User user = new User();
+                int k = i + 95;
+                user.Name = user.Phone = user.Address = Char.ConvertFromUtf32(k).ToUpper();
+                user.Age = i + 20;
+                DataStore.AddUserAsync(user);
+            }
+            LoadItemsCommand.Execute(null);
+
 
             MessagingCenter.Subscribe<AddUser, User>(this, "AddItem", async (obj, item) =>
             {
@@ -58,8 +79,8 @@ namespace UserManager.ViewModels
                 LoadItemsCommand.Execute(null);
 
             });
-
         }
+
 
 
         async Task ExecuteLoadItemsCommand()
@@ -77,6 +98,7 @@ namespace UserManager.ViewModels
                 {
                     Items.Add(item);
                 }
+                Items.Sort(x => x.Name);
             }
             catch (Exception ex)
             {

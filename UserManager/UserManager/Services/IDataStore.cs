@@ -18,6 +18,7 @@ namespace UserManager.Services
         Task<User> GetUserAsync(string id);
 
         Task<IEnumerable<User>> GetUsersAsync(bool forceRefresh = false);
+        
 
 
 

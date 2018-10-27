@@ -42,10 +42,10 @@ namespace UserManager.Views
                 try
                 {
                     MessagingCenter.Send(this, "AddItem", this.newUser);
+                    await Navigation.PopAsync();
                 }
-                catch(Exception) { throw; }
+                catch (Exception) { throw; }
 
-                await Navigation.PopAsync();
             }
 
 

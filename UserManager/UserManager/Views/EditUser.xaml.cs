@@ -39,7 +39,7 @@ namespace UserManager.Views
 
                 await DisplayAlert("Require", "Some feild is requid!!", "Cancle");
             }
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PopToRootAsync (true);
 
         }
 

@@ -14,12 +14,12 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
+    <ContentPage.Content  IsVisible="True">
         <StackLayout Orientation="Vertical" Padding="0"  >
             <StackLayout Padding="10,0,35,10" BackgroundColor="white">
-                <SearchBar  Placeholder="Search Useddddr" 
-                                x:Name="srbSearchPeople"
-                                TextColor="White"
+                <SearchBar  Placeholder="Search " 
+                            x:Name="srbSearchPeople"
+                            TextChanged="srbSearchPeople_TextChanged"
                                 />
             </StackLayout>
             <ScrollView 
