@@ -46,15 +46,15 @@ namespace UserManager.ViewModels
             Items = new ObservableCollection<User>();
 
 
-            for (int i = 0; i < 30; i++)
-            {
-                User user = new User();
-                int k = i + 95;
-                user.Name = user.Phone = user.Address = Char.ConvertFromUtf32(k).ToUpper();
-                user.Age = i + 20;
-                DataStore.AddUserAsync(user);
-            }
-            LoadItemsCommand.Execute(null);
+            //for (int i = 0; i < 30; i++)
+            //{
+            //    User user = new User();
+            //    int k = i + 95;
+            //    user.Name = user.Phone = user.Address = Char.ConvertFromUtf32(k).ToUpper();
+            //    user.Age = i + 20;
+            //    DataStore.AddUserAsync(user);
+            //}
+            //LoadItemsCommand.Execute(null);
 
 
             MessagingCenter.Subscribe<AddUser, User>(this, "AddItem", async (obj, item) =>
